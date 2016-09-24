@@ -37,33 +37,44 @@ public class MainActivity extends AppCompatActivity {
         switch(v.getId()){
             case R.id.buttone:
 
-                calendar = Calendar.getInstance();
-                Date date = calendar.getTime();
-
-                SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
-                System.out.println( "The date is: "+  sdf.format( date )  );
-                Toast.makeText(getApplicationContext(),  sdf.format( date ) , Toast.LENGTH_LONG).show();
-
-                Intent i = new Intent(this, FoodActivity.class);
-                startActivity(i);
-
+                clickedLib();
                 break;
             case R.id.buttonb:
 
+                clickedLib();
+
                 break;
             case R.id.buttonh:
+                clickedLib();
 
                 break;
             case R.id.buttona:
+                clickedLib();
 
                 break;
             case R.id.buttonj:
+                clickedLib();
 
                 break;
             case R.id.buttont:
+                clickedLib();
 
                 break;
         }
+
+    }
+
+    public void clickedLib(){
+
+        calendar = Calendar.getInstance();
+        Date date = calendar.getTime();
+
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+        System.out.println( "The date is: "+  sdf.format( date )  );
+        Toast.makeText(getApplicationContext(),  sdf.format( date ) , Toast.LENGTH_LONG).show();
+
+        Intent i = new Intent(this, FoodActivity.class);
+        startActivity(i);
 
     }
 }

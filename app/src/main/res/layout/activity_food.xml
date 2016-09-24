@@ -21,10 +21,20 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add an items"
+        android:text="Ashwat is triggered"
         android:onClick="addItem"
         android:id="@+id/button"
+        android:layout_marginBottom="51dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="47dp" />
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Done!"
+        android:onClick="foodDone"
+        android:id="@+id/donebutton"
+        android:layout_alignTop="@+id/button"
+        android:layout_toEndOf="@+id/button"
+       />
 </RelativeLayout>
