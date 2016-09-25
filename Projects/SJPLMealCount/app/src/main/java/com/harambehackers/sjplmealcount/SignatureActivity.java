@@ -63,7 +63,7 @@ public class SignatureActivity extends AppCompatActivity {
         byte[] byteArray = byteArrayOutputStream .toByteArray();
         String encoded = Base64.encodeToString(byteArray, Base64.DEFAULT);
 
-        dr.child("base64sig").setValue(encoded);
+        dr.child("base64sig").setValue(encoded.replace("\\n", ""));
 
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);

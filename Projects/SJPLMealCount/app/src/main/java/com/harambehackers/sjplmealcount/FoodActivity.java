@@ -192,6 +192,43 @@ public class FoodActivity extends AppCompatActivity {
         builder.show();
     }
 
+    public void temperatureDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Update Temperature");
+
+// Set up the input
+        final EditText input = new EditText(this);
+// Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+        input.setInputType(InputType.TYPE_CLASS_TEXT);
+        builder.setView(input);
+
+// Set up the buttons
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String m_text = input.getText().toString();
+                Calendar calendar = Calendar.getInstance();
+                Date date = calendar.getTime();
+
+                SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
+                String datee = sdf.format(date).toString();
+
+                myRef.child(datee).child(library).child(mealType).child("temp-" + date.getTime()).setValue(m_text);
+
+
+
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
+    }
+
     public void foodDone(View v){
 
         Calendar calendar = Calendar.getInstance();
@@ -211,6 +248,10 @@ public class FoodActivity extends AppCompatActivity {
         i.putExtra("com.harambehackers.sjplmealcount", library);
         i.putExtra("MEALTYPE", mealType);
         startActivity(i);
+    }
+
+    public void updateTemp(View v){
+        temperatureDialog();
     }
 
 }
