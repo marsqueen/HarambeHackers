@@ -3,6 +3,7 @@ package com.harambehackers.sjplmealcount;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.provider.ContactsContract;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,8 +19,14 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.lang.reflect.Array;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -32,10 +39,44 @@ public class FoodActivity extends AppCompatActivity {
     int foodAmount;
     String foodName;
 
+    String library;
+
+    FirebaseDatabase database;
+    DatabaseReference myRef;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food);
+
+        Intent intent = getIntent();
+        String location = intent.getStringExtra("com.harambehackers.sjplmealcount");
+        switch(location){
+            case "t":
+                library = "Tully";
+                break;
+            case "b":
+                library = "Latinoamerica";
+                break;
+            case "h":
+                library = "Hillview";
+                break;
+            case "a":
+                library = "Alum";
+                break;
+            case "j":
+                library = "Joyce";
+                break;
+            case "e":
+                library = "Educational";
+                break;
+
+        }
+
+
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference("test");
+       // myRef.setValue("hello tacos");
 
         foodName = "";
 
@@ -151,7 +192,22 @@ public class FoodActivity extends AppCompatActivity {
     }
 
     public void foodDone(View v){
+
+        Calendar calendar = Calendar.getInstance();
+        Date date = calendar.getTime();
+
+        SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
+        String datee = sdf.format(date).toString();
+        System.out.println( "The date is: "+  sdf.format( date )  );
+
+        //currentamount = remainingitems
+        //oldamount = items
+
+        myRef.child(datee).child(library).child("orderedfood").setValue(items);
+        myRef.child(datee).child(library).child("usedfood").setValue(remainingitems);
+
         Intent i = new Intent(this, DetailsActivity.class);
+        i.putExtra("com.harambehackers.sjplmealcount", library);
         startActivity(i);
     }
 

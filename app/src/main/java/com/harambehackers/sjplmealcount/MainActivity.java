@@ -37,34 +37,34 @@ public class MainActivity extends AppCompatActivity {
         switch(v.getId()){
             case R.id.buttone:
 
-                clickedLib();
+                clickedLib("e");
                 break;
             case R.id.buttonb:
 
-                clickedLib();
+                clickedLib("b");
 
                 break;
             case R.id.buttonh:
-                clickedLib();
+                clickedLib("h");
 
                 break;
             case R.id.buttona:
-                clickedLib();
+                clickedLib("a");
 
                 break;
             case R.id.buttonj:
-                clickedLib();
+                clickedLib("j");
 
                 break;
             case R.id.buttont:
-                clickedLib();
+                clickedLib("t");
 
                 break;
         }
 
     }
 
-    public void clickedLib(){
+    public void clickedLib(String s){
 
         calendar = Calendar.getInstance();
         Date date = calendar.getTime();
@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(),  sdf.format( date ) , Toast.LENGTH_LONG).show();
 
         Intent i = new Intent(this, FoodActivity.class);
+        i.putExtra("com.harambehackers.sjplmealcount", s);
         startActivity(i);
 
     }

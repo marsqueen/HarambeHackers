@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "803894002626",
+    "firebase_url": "https://sjpl-meal-master-81bd1.firebaseio.com",
+    "project_id": "sjpl-meal-master-81bd1",
+    "storage_bucket": "sjpl-meal-master-81bd1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:803894002626:android:0f8449b536683304",
+        "android_client_info": {
+          "package_name": "com.harambehackers.sjplmealcount"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "803894002626-fs5ed7r23olgsmu3k6dbg3m2igpmfntf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbfX9ixoRG5V31EoFdE4AVSbxxic8Orh4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
-        android:id="@+id/editText"
+        android:id="@+id/wasteFoodText"
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true" />
 
@@ -31,9 +31,9 @@
         android:layout_height="wrap_content"
         android:inputType="textMultiLine"
         android:ems="10"
-        android:id="@+id/editText2"
+        android:id="@+id/commentText"
         android:layout_centerVertical="true"
-        android:layout_alignStart="@+id/editText" />
+        android:layout_alignStart="@+id/wasteFoodText" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -41,8 +41,8 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Additional Comments:"
         android:id="@+id/textView2"
-        android:layout_above="@+id/editText2"
-        android:layout_alignStart="@+id/editText2" />
+        android:layout_above="@+id/commentText"
+        android:layout_alignStart="@+id/commentText" />
 
     <Button
         android:layout_width="wrap_content"
