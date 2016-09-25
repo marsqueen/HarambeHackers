@@ -17,7 +17,7 @@ public class DetailsActivity extends AppCompatActivity {
 
     EditText wasteText;
     EditText commentText;
-    String library, thedate;
+    String library, thedate, mealtype;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +25,10 @@ public class DetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_details);
 
         Intent intent = getIntent();
-        library = intent.getStringExtra("com.harambehackers.sjplmealcount");
+
+        Bundle extras = intent.getExtras();
+        library = extras.getString("library");
+        mealtype = extras.getString("mealtype");
 
         wasteText = (EditText) findViewById(R.id.wasteFoodText);
         commentText = (EditText) findViewById(R.id.commentText);
@@ -42,13 +45,17 @@ public class DetailsActivity extends AppCompatActivity {
     public void nextPage(View v){
 
         FirebaseDatabase fb = FirebaseDatabase.getInstance();
-        DatabaseReference dbr = fb.getReference("test/" + thedate + "/" + library);
+        DatabaseReference dbr = fb.getReference("test/" + mealtype + "/" + thedate + "/" + library);
 
         dbr.child("wastedfood").setValue(wasteText.getText().toString());
         dbr.child("commentText").setValue(commentText.getText().toString());
 
         Intent i = new Intent(this, SignatureActivity.class);
-        i.putExtra("com.harambehackers.sjplmealcount", library);
+        Bundle extras = new Bundle();
+        extras.putString("library", library);
+        extras.putString("mealtype", mealtype);
+        i.putExtras(extras);
+
         startActivity(i);
     }
 }

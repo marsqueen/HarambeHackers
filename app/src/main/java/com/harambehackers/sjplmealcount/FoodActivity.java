@@ -40,6 +40,7 @@ public class FoodActivity extends AppCompatActivity {
     String foodName;
 
     String library;
+    String mealType;
 
     FirebaseDatabase database;
     DatabaseReference myRef;
@@ -50,8 +51,14 @@ public class FoodActivity extends AppCompatActivity {
         setContentView(R.layout.activity_food);
 
         Intent intent = getIntent();
-        String location = intent.getStringExtra("com.harambehackers.sjplmealcount");
-        switch(location){
+
+        Bundle extras = intent.getExtras();
+        library = extras.getString("library");
+        mealType = extras.getString("mealtype");
+
+        Log.d("DEBUG", mealType.toString());
+
+        switch(library){
             case "t":
                 library = "Tully";
                 break;
@@ -75,7 +82,7 @@ public class FoodActivity extends AppCompatActivity {
 
 
         database = FirebaseDatabase.getInstance();
-        myRef = database.getReference("test");
+        myRef = database.getReference();
        // myRef.setValue("hello tacos");
 
         foodName = "";
@@ -198,16 +205,18 @@ public class FoodActivity extends AppCompatActivity {
 
         SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
         String datee = sdf.format(date).toString();
-        System.out.println( "The date is: "+  sdf.format( date )  );
 
         //currentamount = remainingitems
         //oldamount = items
 
-        myRef.child(datee).child(library).child("orderedfood").setValue(items);
-        myRef.child(datee).child(library).child("usedfood").setValue(remainingitems);
+        //myRef.child(datee).child(library).child(mealType).child("orderedfood").setValue(items);
+        //myRef.child(datee).child(library).child(mealType).child("usedfood").setValue(remainingitems);
 
         Intent i = new Intent(this, DetailsActivity.class);
-        i.putExtra("com.harambehackers.sjplmealcount", library);
+        Bundle extras = new Bundle();
+        extras.putString("library", library);
+        extras.putString("mealType", mealType);
+        i.putExtras(extras);
         startActivity(i);
     }
 

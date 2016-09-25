@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
         System.out.println( "The date is: "+  sdf.format( date )  );
 
-        Intent i = new Intent(this, FoodActivity.class);
+        Intent i = new Intent(this, MealActivity.class);
         i.putExtra("com.harambehackers.sjplmealcount", s);
         startActivity(i);
 

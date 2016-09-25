@@ -25,6 +25,7 @@ import java.util.Date;
 public class SignatureActivity extends AppCompatActivity {
 
     SignatureView signatureView;
+    String mealType;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +39,7 @@ public class SignatureActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String library = intent.getStringExtra("com.harambehackers.sjplmealcount");
+        mealType = intent.getStringExtra("com.harambehackers.sjplmealcount1");
 
 
         Calendar calendar = Calendar.getInstance();
