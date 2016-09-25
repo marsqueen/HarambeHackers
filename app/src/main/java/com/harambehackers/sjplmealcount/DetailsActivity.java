@@ -48,6 +48,7 @@ public class DetailsActivity extends AppCompatActivity {
         dbr.child("commentText").setValue(commentText.getText().toString());
 
         Intent i = new Intent(this, SignatureActivity.class);
+        i.putExtra("com.harambehackers.sjplmealcount", library);
         startActivity(i);
     }
 }
