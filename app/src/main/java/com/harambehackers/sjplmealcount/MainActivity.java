@@ -71,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
 
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
         System.out.println( "The date is: "+  sdf.format( date )  );
-        Toast.makeText(getApplicationContext(),  sdf.format( date ) , Toast.LENGTH_LONG).show();
 
         Intent i = new Intent(this, FoodActivity.class);
         i.putExtra("com.harambehackers.sjplmealcount", s);

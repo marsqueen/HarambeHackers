@@ -17,18 +17,15 @@ public class DetailsActivity extends AppCompatActivity {
 
     EditText wasteText;
     EditText commentText;
+    String library, thedate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
-    }
-
-    public void nextPage(View v){
-
         Intent intent = getIntent();
-        String library = intent.getStringExtra("com.harambehackers.sjplmealcount");
+        library = intent.getStringExtra("com.harambehackers.sjplmealcount");
 
         wasteText = (EditText) findViewById(R.id.wasteFoodText);
         commentText = (EditText) findViewById(R.id.commentText);
@@ -37,13 +34,18 @@ public class DetailsActivity extends AppCompatActivity {
         Date date = calendar.getTime();
 
         SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
-        String thedate = sdf.format( date );
+        thedate = sdf.format( date );
+
+
+    }
+
+    public void nextPage(View v){
 
         FirebaseDatabase fb = FirebaseDatabase.getInstance();
         DatabaseReference dbr = fb.getReference("test/" + thedate + "/" + library);
 
-        dbr.child("wastedfood").setValue(wasteText.getText());
-        dbr.child("commentText").setValue(commentText.getText());
+        dbr.child("wastedfood").setValue(wasteText.getText().toString());
+        dbr.child("commentText").setValue(commentText.getText().toString());
 
         Intent i = new Intent(this, SignatureActivity.class);
         startActivity(i);
