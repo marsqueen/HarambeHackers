@@ -28,6 +28,8 @@ dependencies {
     compile 'com.android.support:design:23.4.0'
     compile 'com.google.firebase:firebase-database:9.6.0'
     compile 'com.google.firebase:firebase-auth:9.6.0'
+=======
+>>>>>>> 2fd4556a417422b55e4f2b9c60e68bbf18dcb1d7
 
 
 }
